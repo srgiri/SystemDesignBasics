@@ -24,10 +24,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'com.rabbitmq:amqp-client:5.19.0'
-	implementation 'org.apache.commons:commons-lang3:3.0'
+	//implementation 'com.rabbitmq:amqp-client:5.19.0'
+	implementation 'org.apache.commons:commons-lang3:3.13.0'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	//implementation 'org.springframework.boot:spring-boot-starter-web:2.7.16'
 
 	compileOnly 'org.projectlombok:lombok'
 
