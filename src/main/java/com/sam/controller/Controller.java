@@ -2,6 +2,8 @@ package com.sam.controller;
 
 import com.sam.dto.User;
 import com.sam.message.Producer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/sam")
 public class Controller {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
+
     @Autowired
     private Producer jsonProducer;
 
@@ -21,5 +26,11 @@ public class Controller {
         }
         jsonProducer.sendJsonMessage(user, routingKey);
         return ResponseEntity.ok("Json message sent to RabbitMQ ...");
+    }
+
+    @PostMapping("/github-webhook")
+    public ResponseEntity<String> githubWebhook() {
+        LOGGER.info("Received GitHub webhook API call");
+        return ResponseEntity.ok().build();
     }
 }
