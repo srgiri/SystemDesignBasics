@@ -1,5 +1,6 @@
 package com.sam.controller;
 
+import com.sam.dto.Employee;
 import com.sam.dto.User;
 import com.sam.message.Producer;
 import org.slf4j.Logger;
@@ -26,6 +27,12 @@ public class Controller {
         }
         jsonProducer.sendJsonMessage(user, routingKey);
         return ResponseEntity.ok("Json message sent to RabbitMQ ...");
+    }
+
+    @PostMapping("/publish/obj")
+    public ResponseEntity<String> sendObjectMessage(@RequestBody Employee employee) {
+        jsonProducer.sendObjectMessage(employee);
+        return ResponseEntity.ok("Object message sent to RabbitMQ ...");
     }
 
     @PostMapping("/github-webhook")
